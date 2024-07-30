@@ -130,3 +130,18 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Configurações de E-mail
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+"""
+Configuração para servidor de e-mail (quando houver)
+Se for configurar um servidor de e-mail, e só adequar as configurações abaixo e tirar o comentário.
+
+EMAIL_HOST = 'localhost'
+EMAIL_HOST_USER = 'endereçodoemail@seudomínio.com
+EMAIL_PORT = 587
+EMAIL_USER_TSL = True
+EMAIL_HOST_PASSWORD = 'senhadoemail'
+"""
