@@ -2,10 +2,14 @@ from django.shortcuts import render
 from django.contrib import messages
 
 from .forms import ContatoForm, ProdutoModelForm
+from .models import Produto
 
 
 def index(request):
-    return render(request, 'index.html')
+    context = {
+        'produtos': Produto.objects.all()
+    }
+    return render(request, 'index.html', context)
 
 
 def contato(request):
@@ -33,9 +37,13 @@ def produto(request):
         if form.is_valid():
 
             form.save()
+            from .models import Produto
 
             messages.success(request, 'Produto salvo com sucesso!')
             form = ProdutoModelForm()
+            context = {
+                'produtos': Produto.objects.all()
+            }
         else:
             messages.error(request, 'Erro ao salvar o produto')
     else:
